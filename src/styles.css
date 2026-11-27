@@ -1,0 +1,402 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f7f6f2;
+  color: #292929;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.app {
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 30px 24px;
+}
+
+/* Шапка */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 35px;
+}
+
+.header h1 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  font-size: 29px;
+  color: #333;
+}
+
+.header h1 svg {
+  color: #98734f;
+}
+
+.favorites-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 16px;
+  border: 1px solid #e5ded3;
+  border-radius: 8px;
+  background: white;
+  color: #444;
+}
+
+.favorites-button:hover {
+  background: #f0e9df;
+}
+
+.favorites-button.active {
+  background: #a47c55;
+  color: white;
+  border-color: #a47c55;
+}
+
+/* Поиск */
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  margin-bottom: 32px;
+  background: white;
+  border: 1px solid #e8e3da;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.search > svg {
+  color: #999;
+}
+
+.search input {
+  flex: 1;
+  min-width: 0;
+  padding: 8px 4px;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #333;
+}
+
+.search input::placeholder {
+  color: #aaa;
+}
+
+.search button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 7px;
+  background: #a47c55;
+  color: white;
+}
+
+.search button:hover {
+  background: #896542;
+}
+
+main h2 {
+  margin-bottom: 22px;
+  font-size: 23px;
+  font-weight: 600;
+}
+
+/* Карточки книг */
+
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.book-card {
+  position: relative;
+  display: flex;
+  gap: 15px;
+  min-height: 165px;
+  padding: 15px;
+  background: white;
+  border: 1px solid #eee9e1;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.025);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.book-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
+}
+
+.cover {
+  flex-shrink: 0;
+  width: 90px;
+  height: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 5px;
+  background: #eeeae3;
+  color: #a28a70;
+}
+
+.cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.book-info {
+  min-width: 0;
+  padding: 5px 22px 5px 0;
+}
+
+.book-info h3 {
+  margin: 0 0 9px;
+  font-size: 16px;
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+.book-info p {
+  margin: 0 0 10px;
+  color: #777;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.book-info small {
+  color: #a18b73;
+  font-size: 13px;
+}
+
+/* Избранное */
+
+.heart {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  border: none;
+  border-radius: 50%;
+  background: #f7f6f2;
+  color: #999;
+}
+
+.heart:hover {
+  color: #c45c65;
+  background: #f9eeee;
+}
+
+.heart.active {
+  color: #c45c65;
+  background: #f9eeee;
+}
+
+/* Сообщения */
+
+.message {
+  padding: 25px;
+  border-radius: 9px;
+  background: white;
+  color: #777;
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* Пагинация */
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin: 32px 0 15px;
+}
+
+.pagination span {
+  color: #555;
+  font-size: 14px;
+}
+
+.pagination button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px;
+  border: 1px solid #e5ded3;
+  border-radius: 7px;
+  background: white;
+  color: #555;
+}
+
+.pagination button:hover:not(:disabled) {
+  background: #f0e9df;
+}
+
+.pagination button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+/* Адаптация под телефон */
+
+@media (max-width: 850px) {
+  .book-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 580px) {
+  .app {
+    padding: 20px 14px;
+  }
+
+  .header {
+    gap: 12px;
+    margin-bottom: 25px;
+  }
+
+  .header h1 {
+    font-size: 24px;
+  }
+
+  .favorites-button {
+    padding: 9px 11px;
+    font-size: 13px;
+  }
+
+  .book-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .search {
+    gap: 7px;
+  }
+
+  .search button {
+    padding: 10px 13px;
+  }
+}
+
+/* Расположение списка и подробностей рядом */
+.catalog-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 24px;
+  align-items: start;
+}
+
+.book-card {
+  cursor: pointer;
+}
+
+.book-card:focus-visible {
+  outline: 2px solid #9b7653;
+  outline-offset: 3px;
+}
+
+/* Панель подробностей */
+.book-details {
+  position: sticky;
+  top: 20px;
+  padding: 20px;
+  background: #fffaf3;
+  border: 1px solid #e8dccd;
+  border-radius: 12px;
+}
+
+.details-close {
+  display: block;
+  margin-left: auto;
+  padding: 5px;
+  border: none;
+  background: transparent;
+  color: #6b6259;
+  cursor: pointer;
+}
+
+.details-cover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 190px;
+  margin-bottom: 18px;
+  color: #9b7653;
+}
+
+.details-cover img {
+  max-width: 130px;
+  max-height: 190px;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.book-details h2 {
+  margin: 0 0 8px;
+  font-size: 20px;
+}
+
+.details-author {
+  margin: 0 0 6px;
+  color: #766b60;
+}
+
+.details-year {
+  margin: 0 0 18px;
+  font-size: 14px;
+  color: #928579;
+}
+
+.details-favorite {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #c9ad91;
+  border-radius: 8px;
+  background: transparent;
+  color: #795b40;
+  cursor: pointer;
+}
+
+.details-favorite.active {
+  background: #f1e4d5;
+}
+
+.details-description {
+  margin-top: 22px;
+}
+
+.details-description h3 {
+  margin-bottom: 10px;
+  font-size: 17px;
+}
+
+.details-description p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #62584f;
+}
